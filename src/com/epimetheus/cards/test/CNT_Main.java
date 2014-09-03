@@ -3,6 +3,7 @@ package com.epimetheus.cards.test;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+
 public class CNT_Main implements ControlledScreen {
 
 	@Override
