@@ -1,17 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.epimetheus.cards.test.CNT_Main">
+<AnchorPane prefHeight="800.0" prefWidth="900.0" style="-fx-background-color: #999966" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.epimetheus.cards.test.CNT_Main">
    <children>
-      <Label layoutX="271.0" layoutY="14.0" text="Cards Test">
+      <Label layoutX="346.0" layoutY="14.0" text="Cards Test" textFill="#FFCC66" AnchorPane.leftAnchor="346.0" AnchorPane.rightAnchor="345.0" AnchorPane.topAnchor="14.0">
          <font>
             <Font name="System Bold" size="43.0" />
          </font>
+         <effect>
+            <DropShadow />
+         </effect>
       </Label>
+      <AnchorPane fx:id="cardtable" layoutX="14.0" layoutY="144.0" prefHeight="399.0" prefWidth="840.0" style="-fx-background-color: #999966" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0">
+         <effect>
+            <InnerShadow />
+         </effect></AnchorPane>
    </children>
 </AnchorPane>

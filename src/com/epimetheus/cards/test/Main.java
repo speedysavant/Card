@@ -21,7 +21,7 @@ public class Main extends Application {
 			// Present the Screen to the viewer in a new application window
 			Group root = new Group();
 			root.getChildren().addAll(mainContainer);
-			Scene scene = new Scene(root, 750, 500);
+			Scene scene = new Scene(root, 900, 800);
 			scene.getStylesheets().add(getClass()
 					.getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);

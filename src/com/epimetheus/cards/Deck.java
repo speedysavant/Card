@@ -1,5 +1,7 @@
 package com.epimetheus.cards;
 
-public class Deck {
+import javafx.scene.layout.AnchorPane;
+
+public class Deck extends AnchorPane {
 
 }
