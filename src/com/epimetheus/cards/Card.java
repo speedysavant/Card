@@ -1,6 +1,8 @@
 package com.epimetheus.cards;
 
 import javafx.animation.FadeTransition;
+import javafx.animation.ParallelTransition;
+import javafx.animation.ScaleTransition;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.scene.effect.DropShadow;
@@ -63,7 +65,20 @@ public class Card<T> extends AnchorPane {
 		ft.setToValue(0.0);
 		ft.setCycleCount(1);
 		ft.setAutoReverse(false);
-		ft.play();
+		ft.setOnFinished(event->destroy());
+		
+		ScaleTransition scale = new ScaleTransition(Duration.millis(500), this);
+		scale.setToX(3);
+		scale.setToY(3);
+		
+		ParallelTransition trans = new ParallelTransition();
+		trans.getChildren().addAll(ft, scale);
+		trans.play();
+	}
+	
+	private void destroy(){
+		Hand group = (Hand) this.getParent();
+		group.getChildren().remove(this);
 	}
 	
 	public double getXroot() {

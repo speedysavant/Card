@@ -25,14 +25,13 @@ public class CNT_Main implements ControlledScreen {
 	}
 
 	private void addCards(){
-		Hand hand = new Hand();
-		hand.setPrefWidth(cardtable.widthProperty().get());
-		hand.setPrefHeight(cardtable.heightProperty().get());
-		cardtable.getChildren().add(hand);
-		AnchorPane.setTopAnchor(hand, 5.0);
-		AnchorPane.setBottomAnchor(hand, 5.0);
-		AnchorPane.setLeftAnchor(hand, 5.0);
-		AnchorPane.setRightAnchor(hand, 5.0);
+		TestEvent event = new TestEvent();
+		Tabletop<TestEvent> table = new Tabletop<TestEvent>(event);
+		cardtable.getChildren().addAll(table);
+		AnchorPane.setTopAnchor(table, 5.0);
+		AnchorPane.setBottomAnchor(table, 5.0);
+		AnchorPane.setLeftAnchor(table, 5.0);
+		AnchorPane.setRightAnchor(table, 5.0);
 	}
 	
 }

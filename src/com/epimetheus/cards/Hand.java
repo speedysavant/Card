@@ -23,8 +23,6 @@ public class Hand extends Pane {
 	public Hand(){
 		super();
 		cards = FXCollections.observableArrayList();
-		testHand(5);
-		
 		promote = getPromotionPoint();
 		
 		this.widthProperty().addListener(new ChangeListener<Number>(){
@@ -47,6 +45,7 @@ public class Hand extends Pane {
 		getChildren().addAll(cards);
 	}
 	
+	@SuppressWarnings("unused")
 	private void testHand(int size){
 		for (int i = 0; i < size; i++){
 			Card c = new Card();
@@ -59,6 +58,12 @@ public class Hand extends Pane {
 		c.setOnMouseExited(event -> revertSuggest(c));
 		c.setOnMouseClicked(event -> highlight(c));
 		cards.add(c);
+		getChildren().add(c);
+	}
+	
+	public void remove(Card c){
+		cards.remove(c);
+		this.getChildren().remove(c);
 	}
 	
 	public void arrange(){
@@ -91,6 +96,7 @@ public class Hand extends Pane {
 	private void promote(Card c){
 		if (promoted != null) demote(promoted);
 		promoted = c;
+		c.toFront();
 		TranslateTransition transT = new TranslateTransition(Duration.millis(750),c);
 		transT.setToX(promote.getX());
 		transT.setToY(promote.getY());
@@ -138,6 +144,7 @@ public class Hand extends Pane {
 			promoted = null;
 			cards.remove(c);
 			c.select();
+			arrange();
 		}
 		else { promote(c); }
 	}
