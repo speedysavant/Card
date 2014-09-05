@@ -20,8 +20,8 @@ public class Card<T> extends AnchorPane {
 	private DoubleProperty yroot;
 	private DoubleProperty rotroot;
 	
-	public static int defaultwidth = 200;
-	public static int defaultheight = 300;
+	public static int defaultwidth = 250;
+	public static int defaultheight = 375;
 	
 	private Image image;
 	private ImageView imv;

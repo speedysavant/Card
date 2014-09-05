@@ -68,7 +68,7 @@ public class TestEvent implements GameDataComponent {
 
 	public Hand getChoices(){
 		hand = new Hand();
-		for(int i = 0; i < 5; i++){
+		for(int i = 0; i < 7; i++){
 			hand.add(new Card<String>());
 		}
 		return hand;

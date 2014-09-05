@@ -89,7 +89,7 @@ public class Hand extends Pane {
 		for (Card c: cards){
 			c.setRotroot(10*num);
 			c.setXroot(current);
-			c.setYroot(num*num*5);
+			c.setYroot(num*(num/2)*5-(Card.defaultheight/25));
 			
 			TranslateTransition transX = new TranslateTransition(Duration.millis(1000),c);
 			transX.setToX(c.getXroot());
@@ -114,8 +114,8 @@ public class Hand extends Pane {
 		RotateTransition transR = new RotateTransition(Duration.millis(750),c);
 		transR.setToAngle(0);
 		ScaleTransition scale = new ScaleTransition(Duration.millis(750),c);
-		scale.setToX(1.25);
-		scale.setToY(1.25);
+		scale.setToX(1.3);
+		scale.setToY(1.3);
 		ParallelTransition trans = new ParallelTransition();
 		trans.getChildren().addAll(transT,transR, scale);
 		trans.play();
@@ -161,7 +161,7 @@ public class Hand extends Pane {
 	}
 	
 	private Point2D getPromotionPoint(){
-		return new Point2D(getWidth()/2.0-(Card.defaultwidth/2), -getHeight());
+		return new Point2D(getWidth()/2.0-(Card.defaultwidth/2), -Card.defaultheight*1.3);
 	}
 	
 }
