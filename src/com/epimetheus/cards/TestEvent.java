@@ -12,7 +12,9 @@ import javafx.scene.layout.Pane;
 public class TestEvent implements GameDataComponent {
 
 	protected String name="Test Event";
-	protected String text="Titles and Descriptions are the meat of the Event and, "
+	protected String text="Click a Card to inspect it, click again to select it. "
+			+ "Right click to return it to the hand.\n\nTitles and Descriptions "
+			+ "are the meat of the Event and, "
 			+ "by extension, the primary way that the world is shown"
 			+ " to the player. It's important that the Descriptions are "
 			+ "well written and portray the character of the City and "

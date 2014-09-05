@@ -8,7 +8,10 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.geometry.Point2D;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 
@@ -56,7 +59,16 @@ public class Hand extends Pane {
 	public void add(Card c){
 		c.setOnMouseEntered(event -> suggest(c));
 		c.setOnMouseExited(event -> revertSuggest(c));
-		c.setOnMouseClicked(event -> highlight(c));
+		c.setOnMouseClicked(new EventHandler<MouseEvent>(){
+	          @Override
+	          public void handle(MouseEvent arg0) {
+	        	  if (arg0.getButton()==MouseButton.SECONDARY){
+	        		  demote(c);
+	        	  } else {
+	        		  highlight(c);
+	        	  }
+	          }
+	      });
 		cards.add(c);
 		getChildren().add(c);
 	}
@@ -96,15 +108,14 @@ public class Hand extends Pane {
 	private void promote(Card c){
 		if (promoted != null) demote(promoted);
 		promoted = c;
-		c.toFront();
 		TranslateTransition transT = new TranslateTransition(Duration.millis(750),c);
 		transT.setToX(promote.getX());
 		transT.setToY(promote.getY());
 		RotateTransition transR = new RotateTransition(Duration.millis(750),c);
 		transR.setToAngle(0);
 		ScaleTransition scale = new ScaleTransition(Duration.millis(750),c);
-		scale.setToX(1.1);
-		scale.setToY(1.1);
+		scale.setToX(1.25);
+		scale.setToY(1.25);
 		ParallelTransition trans = new ParallelTransition();
 		trans.getChildren().addAll(transT,transR, scale);
 		trans.play();
@@ -150,7 +161,7 @@ public class Hand extends Pane {
 	}
 	
 	private Point2D getPromotionPoint(){
-		return new Point2D(getWidth()/2.0-(Card.defaultwidth/2), 0-Card.defaultheight);
+		return new Point2D(getWidth()/2.0-(Card.defaultwidth/2), -getHeight());
 	}
 	
 }
