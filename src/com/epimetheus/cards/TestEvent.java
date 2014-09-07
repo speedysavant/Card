@@ -9,7 +9,7 @@ import javafx.scene.control.Separator;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.Pane;
 
-public class TestEvent implements GameDataComponent {
+public class TestEvent implements GameEvent {
 
 	protected String name="Test Event";
 	protected String text="Click a Card to inspect it, click again to select it. "
@@ -28,11 +28,19 @@ public class TestEvent implements GameDataComponent {
 			+ "required for the more important Quests.";
 	
 	protected Hand hand;
+	protected Deck deck;
 	protected Pane pane;
 	
-	public TestEvent(){
-		hand = new Hand();
+	public TestEvent(Deck deck){
+		this.deck=deck;
+		hand = new Hand(deck);
 		pane = new VBox();
+	}
+	
+	public TestEvent(Deck deck, String name, String text){
+		this(deck);
+		this.name = name;
+		this.text = text;
 	}
 	
 	@Override
@@ -67,9 +75,9 @@ public class TestEvent implements GameDataComponent {
 	}
 
 	public Hand getChoices(){
-		hand = new Hand();
-		for(int i = 0; i < 7; i++){
-			hand.add(new Card<String>());
+		hand = new Hand(deck);
+		for(int i = 0; i < 5; i++){
+			hand.add(new Card<String>(""+i));
 		}
 		return hand;
 	}

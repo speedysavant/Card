@@ -19,12 +19,14 @@ import javafx.util.Duration;
 public class Hand extends Pane {
 
 	protected ObservableList<Card> cards;
+	protected Deck deck;
 	protected double handWidth;
 	protected Point2D promote;
 	protected Card promoted = null;
 	
-	public Hand(){
+	public Hand(Deck deck){
 		super();
+		this.deck = deck;
 		cards = FXCollections.observableArrayList();
 		promote = getPromotionPoint();
 		
@@ -48,10 +50,10 @@ public class Hand extends Pane {
 		getChildren().addAll(cards);
 	}
 	
-	@SuppressWarnings("unused")
+	@SuppressWarnings({ "unused", "unchecked" })
 	private void testHand(int size){
 		for (int i = 0; i < size; i++){
-			Card c = new Card();
+			Card c = new Card(deck);
 			add(c);
 		}
 	}
@@ -153,8 +155,9 @@ public class Hand extends Pane {
 	private void highlight(Card c){
 		if (promoted==c){
 			promoted = null;
+			c.toFront();
 			cards.remove(c);
-			c.select();
+			deck.resolve(c);
 			arrange();
 		}
 		else { promote(c); }

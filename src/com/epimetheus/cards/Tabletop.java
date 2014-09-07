@@ -6,21 +6,19 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
 
-public class Tabletop<T extends GameDataComponent> extends AnchorPane {
+public class Tabletop extends AnchorPane {
+	protected GameEvent currentEvent;
 	protected Hand hand;
 	protected Card<String> selected;
 	protected Pane presentation;
+	protected Deck deck;
 	
 	private double bodyHeight;
 	private double handHeight; 
 	
-	protected T t;
-	
-	public Tabletop(T t){
+	public Tabletop(Deck deck){
 		super();
-		this.hand=t.getChoices();
-		setHand(t.getChoices());
-		present(t.present());
+		setEvent(deck.getEvent());
 		
 		this.heightProperty().addListener(new ChangeListener<Number>(){
 			@Override
@@ -33,7 +31,15 @@ public class Tabletop<T extends GameDataComponent> extends AnchorPane {
 			}
 		});
 		
-		this.getChildren().addAll(presentation,hand);
+	}
+	
+	public void setEvent(GameEvent t){
+		this.getChildren().clear();
+		this.currentEvent=t;
+		this.hand=currentEvent.getChoices();
+		setHand(currentEvent.getChoices());
+		present(currentEvent.present());
+		this.getChildren().addAll(presentation, hand);
 	}
 	
 	public void setHand(Hand hand){
@@ -44,7 +50,7 @@ public class Tabletop<T extends GameDataComponent> extends AnchorPane {
 		// getChildren().add(hand);
 	}
 	
-	private void present(Pane p){
+	public void present(Pane p){
 		presentation = p;
 		AnchorPane.setTopAnchor(presentation, 5.0);
 		AnchorPane.setLeftAnchor(presentation, 5.0);

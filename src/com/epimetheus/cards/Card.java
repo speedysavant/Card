@@ -59,23 +59,24 @@ public class Card<T> extends AnchorPane {
 		this.data = data;
 	}
 
-	public void select(){
+	public void select(Deck deck){
 		FadeTransition ft = new FadeTransition(Duration.millis(500), this);
 		ft.setFromValue(1.0);
 		ft.setToValue(0.0);
 		ft.setCycleCount(1);
 		ft.setAutoReverse(false);
-		ft.setOnFinished(event->destroy());
 		
 		ScaleTransition scale = new ScaleTransition(Duration.millis(500), this);
 		scale.setToX(3);
 		scale.setToY(3);
 		
 		ParallelTransition trans = new ParallelTransition();
+		trans.setOnFinished(event->deck.resolveDeck(this));
 		trans.getChildren().addAll(ft, scale);
 		trans.play();
 	}
 	
+	@SuppressWarnings("unused")
 	private void destroy(){
 		Hand group = (Hand) this.getParent();
 		group.getChildren().remove(this);
