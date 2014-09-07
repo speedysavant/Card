@@ -77,7 +77,7 @@ public class TestEvent implements GameEvent {
 	public Hand getChoices(){
 		hand = new Hand(deck);
 		for(int i = 0; i < 5; i++){
-			hand.add(new Card<String>(""+i));
+			hand.add(new Card<String>(new BasicResolution(i)));
 		}
 		return hand;
 	}

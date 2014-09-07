@@ -14,7 +14,7 @@ import javafx.util.Duration;
 
 public class Card<T> extends AnchorPane {
 
-	protected T data;
+	protected CardResolution resolution;
 	
 	private DoubleProperty xroot;
 	private DoubleProperty yroot;
@@ -48,15 +48,14 @@ public class Card<T> extends AnchorPane {
         ds.setOffsetY(3.0);
         ds.setOffsetX(3.0);
         ds.setColor(Color.BLACK);
-		
         this.setEffect(ds);
         
 		this.getChildren().addAll(imv);
 	}
 	
-	public Card(T data){
+	public Card(CardResolution resolution){
 		this();
-		this.data = data;
+		this.resolution = resolution;
 	}
 
 	public void select(Deck deck){
@@ -105,12 +104,13 @@ public class Card<T> extends AnchorPane {
 	public void setRotroot(double rotroot) {
 		this.rotroot.set(rotroot);
 	}
-	
-	public T getData(){
-		return data;
+
+	public Object getResolution() {
+		return resolution.getResolution();
+	}
+
+	public void setResolution(CardResolution resolution) {
+		this.resolution = resolution;
 	}
 	
-	public void setData(T data) {
-		this.data = data;
-	}
 }

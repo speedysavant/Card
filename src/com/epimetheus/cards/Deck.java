@@ -55,10 +55,10 @@ public class Deck extends Pane {
 			ft.setCycleCount(1);
 			ft.setAutoReverse(false);
 			ft.play();
-			current = Integer.valueOf(c.getData().toString());
+			current = (Integer)c.getResolution();
 			myTable.setEvent(events.get(current));
 		} catch (NullPointerException e){
-			throw new RuntimeException("Unable to load Event " + c.getData());
+			throw new RuntimeException("Unable to load Event " + c.getResolution());
 		}
 	}
 }

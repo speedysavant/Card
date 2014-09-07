@@ -50,10 +50,10 @@ public class Hand extends Pane {
 		getChildren().addAll(cards);
 	}
 	
-	@SuppressWarnings({ "unused", "unchecked" })
+	@SuppressWarnings({ "unused" })
 	private void testHand(int size){
 		for (int i = 0; i < size; i++){
-			Card c = new Card(deck);
+			Card c = new Card(new BasicResolution(i));
 			add(c);
 		}
 	}
@@ -125,6 +125,7 @@ public class Hand extends Pane {
 	
 	private void demote(Card c){
 		if (promoted == c) promoted = null;
+		neutralizeCard(c);
 		TranslateTransition transT = new TranslateTransition(Duration.millis(750),c);
 		transT.setToX(c.getXroot());
 		transT.setToY(c.getYroot());
@@ -135,6 +136,7 @@ public class Hand extends Pane {
 		scale.setToY(1);
 		ParallelTransition trans = new ParallelTransition();
 		trans.getChildren().addAll(transT,transR, scale);
+		trans.setOnFinished(event -> energizeCard(c));
 		trans.play();
 	}
 	
@@ -167,4 +169,13 @@ public class Hand extends Pane {
 		return new Point2D(getWidth()/2.0-(Card.defaultwidth/2), -Card.defaultheight*1.3);
 	}
 	
+	private void neutralizeCard(Card c){
+		c.setOnMouseEntered(null);
+		c.setOnMouseExited(null);
+	}
+	
+	private void energizeCard(Card c){
+		c.setOnMouseEntered(event -> suggest(c));
+		c.setOnMouseExited(event -> revertSuggest(c));
+	}
 }
