@@ -6,15 +6,26 @@ import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.beans.property.DoubleProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class ScreensController extends StackPane {
+	
+	private Stage stage;
+	
+	public ScreensController(Stage stage){
+		this.stage=stage;
+	}
+	
 	@SuppressWarnings("rawtypes")
 	private final class FadeBetweenScreens implements EventHandler {
 		private final DoubleProperty opacity;
@@ -30,7 +41,8 @@ public class ScreensController extends StackPane {
 			// remove current screen
 			getChildren().remove(0);
 			// add new screen
-			getChildren().add(0,screens.get(name));
+			Node node = screens.get(name);
+			getChildren().add(0,node);
 			Timeline fadeIn = new Timeline(
 					new KeyFrame(Duration.ZERO,
 							new KeyValue(opacity, 0.0)),
@@ -43,6 +55,24 @@ public class ScreensController extends StackPane {
 	
 
 	public void addScreen(Screens name, Node screen){
+		if (screen instanceof AnchorPane){
+			stage.resizableProperty().addListener(new ChangeListener<Boolean>(){
+
+				@Override
+				public void changed(ObservableValue<? extends Boolean> arg0,
+						Boolean arg1, Boolean arg2) {
+					System.out.println("val = " + arg0 + " old = " + arg1 + " new = " + arg2);
+				}
+				
+			});
+			
+			//AnchorPane.setTopAnchor(screen, 5.0);
+			//AnchorPane.setBottomAnchor(screen, 5.0);
+			//AnchorPane.setLeftAnchor(screen, 5.0);
+			//AnchorPane.setRightAnchor(screen, 5.0);
+		} else {
+			
+		}
 		screens.put(name.toString(), screen);
 	}
 	public boolean loadScreen(Screens screen){
@@ -84,6 +114,25 @@ public class ScreensController extends StackPane {
 						new KeyFrame(new Duration(2500), new KeyValue(opacity, 1.0)));
 				fadeIn.play();
 			}
+			
+			stage.widthProperty().addListener(new ChangeListener<Object>(){
+				@Override
+				public void changed(ObservableValue<?> observable,
+						Object oldValue, Object newValue) {
+					AnchorPane ap = (AnchorPane) screens.get(name.toString());
+					ap.setPrefWidth((double)newValue);
+					ap.autosize();
+				}
+			});
+			stage.heightProperty().addListener(new ChangeListener<Object>(){
+				@Override
+				public void changed(ObservableValue<?> observable,
+						Object oldValue, Object newValue) {
+					AnchorPane ap = (AnchorPane) screens.get(name.toString());
+					ap.setPrefHeight((double)newValue);
+					ap.autosize();
+				}
+			});
 			return true;
 			
 		} else {

@@ -58,6 +58,7 @@ public class Card<T> extends AnchorPane {
 		this.resolution = resolution;
 	}
 
+	// Runs when the card is selected as the desired choice from the hand.
 	public void select(Deck deck){
 		FadeTransition ft = new FadeTransition(Duration.millis(500), this);
 		ft.setFromValue(1.0);
@@ -73,12 +74,6 @@ public class Card<T> extends AnchorPane {
 		trans.setOnFinished(event->deck.resolveDeck(this));
 		trans.getChildren().addAll(ft, scale);
 		trans.play();
-	}
-	
-	@SuppressWarnings("unused")
-	private void destroy(){
-		Hand group = (Hand) this.getParent();
-		group.getChildren().remove(this);
 	}
 	
 	public double getXroot() {

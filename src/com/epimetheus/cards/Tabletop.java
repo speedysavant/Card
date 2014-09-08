@@ -18,6 +18,8 @@ public class Tabletop extends AnchorPane {
 	
 	public Tabletop(Deck deck){
 		super();
+		this.deck=deck;
+		deck.setTable(this);
 		setEvent(deck.getEvent());
 		
 		this.heightProperty().addListener(new ChangeListener<Number>(){
@@ -33,16 +35,18 @@ public class Tabletop extends AnchorPane {
 		
 	}
 	
+	// Places the appropriate Event into the Tabletop. Generally, this
+	// is called by the Deck in the Table constructor.
 	public void setEvent(GameEvent t){
 		this.getChildren().clear();
 		this.currentEvent=t;
 		this.hand=currentEvent.getChoices();
 		setHand(currentEvent.getChoices());
-		present(currentEvent.present());
+		setPresentation(currentEvent.present());
 		this.getChildren().addAll(presentation, hand);
 	}
 	
-	public void setHand(Hand hand){
+	private void setHand(Hand hand){
 		this.hand = hand;
 		AnchorPane.setBottomAnchor(hand, 5.0);
 		AnchorPane.setLeftAnchor(hand, 5.0);
@@ -50,7 +54,7 @@ public class Tabletop extends AnchorPane {
 		// getChildren().add(hand);
 	}
 	
-	public void present(Pane p){
+	private void setPresentation(Pane p){
 		presentation = p;
 		AnchorPane.setTopAnchor(presentation, 5.0);
 		AnchorPane.setLeftAnchor(presentation, 5.0);

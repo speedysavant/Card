@@ -50,14 +50,7 @@ public class Hand extends Pane {
 		getChildren().addAll(cards);
 	}
 	
-	@SuppressWarnings({ "unused" })
-	private void testHand(int size){
-		for (int i = 0; i < size; i++){
-			Card c = new Card(new BasicResolution(i));
-			add(c);
-		}
-	}
-	
+	// Adds the card to the hand
 	public void add(Card c){
 		c.setOnMouseEntered(event -> suggest(c));
 		c.setOnMouseExited(event -> revertSuggest(c));
@@ -75,11 +68,13 @@ public class Hand extends Pane {
 		getChildren().add(c);
 	}
 	
+	// removes the card from the hand
 	public void remove(Card c){
 		cards.remove(c);
 		this.getChildren().remove(c);
 	}
 	
+	// Properly lay out the cards in an arc.
 	public void arrange(){
 		handWidth = getWidth()-(Card.defaultwidth);
 		double mid = getWidth()/2;
@@ -107,6 +102,7 @@ public class Hand extends Pane {
 		trans.play();
 	}
 	
+	// Moves the card to the promotion point for review or selection
 	private void promote(Card c){
 		if (promoted != null) demote(promoted);
 		promoted = c;
@@ -123,6 +119,7 @@ public class Hand extends Pane {
 		trans.play();
 	}
 	
+	// Send the card back to the hand from the promotion point
 	private void demote(Card c){
 		if (promoted == c) promoted = null;
 		neutralizeCard(c);
@@ -140,6 +137,7 @@ public class Hand extends Pane {
 		trans.play();
 	}
 	
+	// Pop the card out of the hand a little
 	private void suggest(Card c){
 		if (promoted==c) return;
 		TranslateTransition transT = new TranslateTransition(Duration.millis(500),c);
@@ -147,6 +145,7 @@ public class Hand extends Pane {
 		transT.play();
 	}
 	
+	// return the card to the hand
 	private void revertSuggest(Card c){
 		if (promoted==c) return;
 		TranslateTransition transT = new TranslateTransition(Duration.millis(500),c);
@@ -154,6 +153,7 @@ public class Hand extends Pane {
 		transT.play();
 	}
 	
+	// select the card in the promotion point
 	private void highlight(Card c){
 		if (promoted==c){
 			promoted = null;
@@ -165,15 +165,18 @@ public class Hand extends Pane {
 		else { promote(c); }
 	}
 	
+	// determine the promotion point after resizing
 	private Point2D getPromotionPoint(){
 		return new Point2D(getWidth()/2.0-(Card.defaultwidth/2), -Card.defaultheight*1.3);
 	}
 	
+	// disable card mouseover 
 	private void neutralizeCard(Card c){
 		c.setOnMouseEntered(null);
 		c.setOnMouseExited(null);
 	}
 	
+	// enable card mouseover
 	private void energizeCard(Card c){
 		c.setOnMouseEntered(event -> suggest(c));
 		c.setOnMouseExited(event -> revertSuggest(c));

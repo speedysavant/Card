@@ -14,7 +14,9 @@ import javafx.scene.layout.AnchorPane;
 public class CNT_Main implements ControlledScreen {
 
 	@FXML protected AnchorPane cardtable;
+	@FXML protected AnchorPane left;
 	@FXML protected AnchorPane world;
+	@FXML protected ImageView brassbutton;
 	protected Image image;
 	protected ImageView imv;
 	
@@ -28,6 +30,7 @@ public class CNT_Main implements ControlledScreen {
 		//imv.fitHeightProperty().bind(world.heightProperty());
 		world.getChildren().add(imv);
 		imv.toBack();
+		buildLeft();
 		addCards();
 	}
 
@@ -37,19 +40,13 @@ public class CNT_Main implements ControlledScreen {
 		
 	}
 
-	private void addCards(){
+	public void buildLeft(){
 		
-		// Build the Deck
-		Deck deck = new Deck();
-		deck.addEvent(new TestEvent(deck, "Event 0", "Event 1 Description"));
-		deck.addEvent(new TestEvent(deck, "Event 1", "Event 2 Description"));
-		deck.addEvent(new TestEvent(deck, "Event 2", "Event 3 Description"));
-		deck.addEvent(new TestEvent(deck, "Event 3", "Event 4 Description"));
-		deck.addEvent(new TestEvent(deck, "Event 4", "Event 5 Description"));
-
-		// Setup a Table, add it to the scenegraph
+	}
+	
+	private void addCards(){
+		Deck deck = new TestDeckBuilder().getDeck();
 		Tabletop table = new Tabletop(deck);
-		deck.setTable(table);
 		cardtable.getChildren().addAll(table);
 		AnchorPane.setTopAnchor(table, 5.0);
 		AnchorPane.setBottomAnchor(table, 5.0);

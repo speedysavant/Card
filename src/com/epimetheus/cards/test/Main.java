@@ -12,7 +12,7 @@ public class Main extends Application {
 		try {
 			// The ScreensController pre-loads all Screens that we will find
 			// in the app. This code will be migrated into the Screens enum
-			ScreensController mainContainer = new ScreensController();
+			ScreensController mainContainer = new ScreensController(primaryStage);
 			mainContainer.loadScreen(Screens.MAIN);
 			
 			// Tell the Screen Controller which Screen we want to display
