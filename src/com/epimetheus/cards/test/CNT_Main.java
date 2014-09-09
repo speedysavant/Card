@@ -10,7 +10,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
-
 public class CNT_Main implements ControlledScreen {
 
 	@FXML protected AnchorPane cardtable;
@@ -26,8 +25,6 @@ public class CNT_Main implements ControlledScreen {
 		imv = new ImageView(image);
 		imv.setFitHeight(1000);
 		imv.setFitWidth(1600);
-		//imv.fitWidthProperty().bind(world.widthProperty());
-		//imv.fitHeightProperty().bind(world.heightProperty());
 		world.getChildren().add(imv);
 		imv.toBack();
 		buildLeft();
