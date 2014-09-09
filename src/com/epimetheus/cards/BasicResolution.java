@@ -2,9 +2,9 @@ package com.epimetheus.cards;
 
 public class BasicResolution implements CardResolution {
 
-	private int i;
+	protected String i;
 	
-	public BasicResolution(int i){
+	public BasicResolution(String i){
 		this.i=i;
 	}
 	

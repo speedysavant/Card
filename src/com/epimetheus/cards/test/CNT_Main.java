@@ -28,12 +28,11 @@ public class CNT_Main implements ControlledScreen {
 		world.getChildren().add(imv);
 		imv.toBack();
 		buildLeft();
-		addCards();
+		
 	}
 
 	@Override
 	public void setScreenParent(ScreensController screenPage) {
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -42,7 +41,7 @@ public class CNT_Main implements ControlledScreen {
 	}
 	
 	private void addCards(){
-		Deck deck = new TestDeckBuilder().getDeck();
+		Deck deck = new BasicDeckBuilder().getDeck();
 		Tabletop table = new Tabletop(deck);
 		cardtable.getChildren().addAll(table);
 		AnchorPane.setTopAnchor(table, 5.0);
@@ -51,4 +50,7 @@ public class CNT_Main implements ControlledScreen {
 		AnchorPane.setRightAnchor(table, 5.0);
 	}
 	
+	public void refresh(){
+		addCards();
+	}
 }

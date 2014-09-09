@@ -21,6 +21,9 @@ import javafx.util.Duration;
 public class ScreensController extends StackPane {
 	
 	private Stage stage;
+
+	private HashMap<String, Node> screens = new HashMap<>();
+	private HashMap<String, ControlledScreen> controllers = new HashMap<>();
 	
 	public ScreensController(Stage stage){
 		this.stage=stage;
@@ -51,7 +54,6 @@ public class ScreensController extends StackPane {
 			fadeIn.play();
 		}
 	}
-	private HashMap<String, Node> screens = new HashMap<>();
 	
 
 	public void addScreen(Screens name, Node screen){
@@ -66,10 +68,6 @@ public class ScreensController extends StackPane {
 				
 			});
 			
-			//AnchorPane.setTopAnchor(screen, 5.0);
-			//AnchorPane.setBottomAnchor(screen, 5.0);
-			//AnchorPane.setLeftAnchor(screen, 5.0);
-			//AnchorPane.setRightAnchor(screen, 5.0);
 		} else {
 			
 		}
@@ -83,6 +81,7 @@ public class ScreensController extends StackPane {
 			ControlledScreen myScreenController =
 					((ControlledScreen) myLoader.getController());
 			myScreenController.setScreenParent(this);
+			controllers.put(screen.getFxml(), myScreenController);
 			addScreen(screen, loadScreen);
 			return true;
 		} catch (Exception e) {
@@ -133,6 +132,7 @@ public class ScreensController extends StackPane {
 					ap.autosize();
 				}
 			});
+			controllers.get(name.getFxml()).refresh();
 			return true;
 			
 		} else {

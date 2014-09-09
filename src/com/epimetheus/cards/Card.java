@@ -14,6 +14,7 @@ import javafx.util.Duration;
 
 public class Card<T> extends AnchorPane {
 
+	protected String name = "";
 	protected CardResolution resolution;
 	
 	private DoubleProperty xroot;
@@ -106,6 +107,14 @@ public class Card<T> extends AnchorPane {
 
 	public void setResolution(CardResolution resolution) {
 		this.resolution = resolution;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 }

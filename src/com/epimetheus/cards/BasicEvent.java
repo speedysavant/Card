@@ -9,35 +9,22 @@ import javafx.scene.control.Separator;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.Pane;
 
-public class TestEvent implements GameEvent {
+public class BasicEvent implements GameEvent {
 
 	protected String name="Test Event";
-	protected String text="Click a Card to inspect it, click again to select it. "
-			+ "Right click to return it to the hand.\n\nTitles and Descriptions "
-			+ "are the meat of the Event and, "
-			+ "by extension, the primary way that the world is shown"
-			+ " to the player. It's important that the Descriptions are "
-			+ "well written and portray the character of the City and "
-			+ "world well, without being overdone. Major Quests and "
-			+ "Events can be voice acted if possible, and if a voice "
-			+ "actor of sufficient talent is found - look for "
-			+ "Bastion-style and quality in voice acting. Any voice-acted"
-			+ " Quest should feature animations or at the very least "
-			+ "static pictures or 3D scenes. Ideally any important Event "
-			+ "will have pictures to go with them. Music will also be "
-			+ "required for the more important Quests.";
+	protected String text="Click a Card to inspect it, click again to select it.";
 	
 	protected Hand hand;
 	protected Deck deck;
 	protected Pane pane;
 	
-	public TestEvent(Deck deck){
+	public BasicEvent(Deck deck){
 		this.deck=deck;
 		hand = new Hand(deck);
 		pane = new VBox();
 	}
 	
-	public TestEvent(Deck deck, String name, String text){
+	public BasicEvent(Deck deck, String name, String text){
 		this(deck);
 		this.name = name;
 		this.text = text;
@@ -74,11 +61,29 @@ public class TestEvent implements GameEvent {
 		return pane;
 	}
 
+	public void addChoice(String text, String choice){
+		Card<String> c = new Card<>(new BasicResolution(choice));
+		c.setName(name);
+		hand.add(c);
+	}
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getText() {
+		return text;
+	}
+
+	public void setText(String text) {
+		this.text = text;
+	}
+
 	public Hand getChoices(){
-		hand = new Hand(deck);
-		for(int i = 0; i < 5; i++){
-			hand.add(new Card<String>(new BasicResolution(String.valueOf(i))));
-		}
 		return hand;
 	}
 	

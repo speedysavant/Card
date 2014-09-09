@@ -8,6 +8,8 @@ public class TestDeckBuilder implements DeckBuilder {
 	
 	public TestDeckBuilder(){
 		Deck deck = new Deck();
+		
+		
 		deck.addEvent(new TestEvent(deck, "Event 0", "Event 0 Description"));
 		deck.addEvent(new TestEvent(deck, "Event 1", "Event 1 Description"));
 		deck.addEvent(new TestEvent(deck, "Event 2", "Event 2 Description"));

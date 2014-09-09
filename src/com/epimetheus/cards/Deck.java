@@ -27,6 +27,7 @@ public class Deck extends Pane {
 	
 	public void addEvent(GameEvent e){
 		events.add(e);
+		System.out.println("Event added at " + (events.size()-1));
 	}
 	
 	public GameEvent getEvent(){
@@ -62,7 +63,7 @@ public class Deck extends Pane {
 			ft.setCycleCount(1);
 			ft.setAutoReverse(false);
 			ft.play();
-			current = (Integer)c.getResolution();
+			current = Integer.valueOf((String)c.getResolution());
 			myTable.setEvent(events.get(current));
 		} catch (NullPointerException e){
 			throw new RuntimeException("Unable to load Event " + c.getResolution());

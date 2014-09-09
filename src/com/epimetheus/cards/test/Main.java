@@ -1,5 +1,5 @@
 package com.epimetheus.cards.test;
-	
+
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Group;
@@ -34,3 +34,4 @@ public class Main extends Application {
 		launch(args);
 	}
 }
+
