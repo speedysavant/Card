@@ -10,11 +10,11 @@ public class TestDeckBuilder implements DeckBuilder {
 		Deck deck = new Deck();
 		
 		
-		deck.addEvent(new TestEvent(deck, "Event 0", "Event 0 Description"));
-		deck.addEvent(new TestEvent(deck, "Event 1", "Event 1 Description"));
-		deck.addEvent(new TestEvent(deck, "Event 2", "Event 2 Description"));
-		deck.addEvent(new TestEvent(deck, "Event 3", "Event 3 Description"));
-		deck.addEvent(new TestEvent(deck, "Event 4", "Event 4 Description"));
+		deck.addEvent("Event 0",new TestEvent(deck, "Event 0", "Event 0 Description"));
+		deck.addEvent("Event 1",new TestEvent(deck, "Event 1", "Event 1 Description"));
+		deck.addEvent("Event 2",new TestEvent(deck, "Event 2", "Event 2 Description"));
+		deck.addEvent("Event 3",new TestEvent(deck, "Event 3", "Event 3 Description"));
+		deck.addEvent("Event 4",new TestEvent(deck, "Event 4", "Event 4 Description"));
 		decks.put("Test", deck);
 	}
 	

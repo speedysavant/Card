@@ -11,6 +11,7 @@ import javafx.scene.layout.Pane;
 
 public class BasicEvent implements GameEvent {
 
+	protected String id = "";
 	protected String name="Test Event";
 	protected String text="Click a Card to inspect it, click again to select it.";
 	
@@ -18,14 +19,15 @@ public class BasicEvent implements GameEvent {
 	protected Deck deck;
 	protected Pane pane;
 	
-	public BasicEvent(Deck deck){
+	public BasicEvent(String id, Deck deck){
 		this.deck=deck;
+		this.id=id;
 		hand = new Hand(deck);
 		pane = new VBox();
 	}
 	
-	public BasicEvent(Deck deck, String name, String text){
-		this(deck);
+	public BasicEvent(String id, Deck deck, String name, String text){
+		this(id, deck);
 		this.name = name;
 		this.text = text;
 	}
@@ -62,8 +64,7 @@ public class BasicEvent implements GameEvent {
 	}
 
 	public void addChoice(String text, String choice){
-		Card<String> c = new Card<>(new BasicResolution(choice));
-		c.setName(name);
+		Card<String> c = new Card<>(text, ResolutionManager.build(choice));
 		hand.add(c);
 	}
 	
@@ -83,6 +84,10 @@ public class BasicEvent implements GameEvent {
 		this.text = text;
 	}
 
+	public String getId(){
+		return id;
+	}
+	
 	public Hand getChoices(){
 		return hand;
 	}

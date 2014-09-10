@@ -5,6 +5,7 @@ import javafx.animation.ParallelTransition;
 import javafx.animation.ScaleTransition;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
+import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -27,10 +28,12 @@ public class Card<T> extends AnchorPane {
 	private Image image;
 	private ImageView imv;
 	private DropShadow ds;
+	private Label label = new Label();
 	
-	public Card(){
+	public Card(String name){
 		super();
-		this.getStyleClass().add("testcard");
+		setName(name);
+		this.getStyleClass().add("card-basic");
 		this.setMaxHeight(defaultheight);
 		this.setMinHeight(defaultheight);
 		this.setMinWidth(defaultwidth);
@@ -40,7 +43,7 @@ public class Card<T> extends AnchorPane {
 		yroot = new SimpleDoubleProperty();
 		rotroot = new SimpleDoubleProperty();
 		
-		image = new Image("resources/Jennar.jpg");
+		image = new Image("resources/blankcardframe.png");
 		imv = new ImageView(image);
 		imv.fitWidthProperty().bind(this.widthProperty());
 		imv.fitHeightProperty().bind(this.heightProperty());
@@ -51,11 +54,11 @@ public class Card<T> extends AnchorPane {
         ds.setColor(Color.BLACK);
         this.setEffect(ds);
         
-		this.getChildren().addAll(imv);
+		this.getChildren().addAll(label,imv);
 	}
 	
-	public Card(CardResolution resolution){
-		this();
+	public Card(String name, CardResolution resolution){
+		this(name);
 		this.resolution = resolution;
 	}
 
@@ -101,8 +104,12 @@ public class Card<T> extends AnchorPane {
 		this.rotroot.set(rotroot);
 	}
 
-	public Object getResolution() {
-		return resolution.getResolution();
+	public CardResolution getResolution() {
+		return resolution;
+	}
+	
+	public Object resolve(){
+		return resolution.resolve();
 	}
 
 	public void setResolution(CardResolution resolution) {
@@ -115,6 +122,14 @@ public class Card<T> extends AnchorPane {
 
 	public void setName(String name) {
 		this.name = name;
+		label.setText(name);
+		label.getStyleClass().add("card-label-basic");
+		label.setWrapText(true);
+		AnchorPane.setTopAnchor(label, 50.0);
+		AnchorPane.setLeftAnchor(label, 35.0);
+		AnchorPane.setRightAnchor(label, 35.0);
+		
+		label.toFront();
 	}
 	
 }

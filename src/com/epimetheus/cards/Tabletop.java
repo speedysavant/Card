@@ -60,4 +60,9 @@ public class Tabletop extends AnchorPane {
 		AnchorPane.setLeftAnchor(presentation, 5.0);
 		AnchorPane.setRightAnchor(presentation, 5.0);
 	}
+	
+	protected Deck getDeck(){
+		return deck;
+	}
+
 }

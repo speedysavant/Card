@@ -44,10 +44,10 @@ public class CNT_Main implements ControlledScreen {
 		Deck deck = new BasicDeckBuilder().getDeck();
 		Tabletop table = new Tabletop(deck);
 		cardtable.getChildren().addAll(table);
-		AnchorPane.setTopAnchor(table, 5.0);
-		AnchorPane.setBottomAnchor(table, 5.0);
-		AnchorPane.setLeftAnchor(table, 5.0);
-		AnchorPane.setRightAnchor(table, 5.0);
+		AnchorPane.setTopAnchor(table, 30.0);
+		AnchorPane.setBottomAnchor(table, 30.0);
+		AnchorPane.setLeftAnchor(table, 30.0);
+		AnchorPane.setRightAnchor(table, 30.0);
 	}
 	
 	public void refresh(){

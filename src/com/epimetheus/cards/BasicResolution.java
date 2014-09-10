@@ -9,7 +9,8 @@ public class BasicResolution implements CardResolution {
 	}
 	
 	@Override
-	public Object getResolution() {
+	public Object resolve() {
+		System.out.println("Testing for Resolution: " + i);
 		return i;
 	}
 

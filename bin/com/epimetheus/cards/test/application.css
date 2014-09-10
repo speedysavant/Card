@@ -24,3 +24,17 @@
 	-fx-font-size: 28.0;
 	-fx-effect: dropshadow( three-pass-box , #e4fffd , 5, 0.0 , 0 , 1 );
 }
+
+.card-basic {
+	-fx-font: 16px "Nyala";
+	-fx-font-size: 28.0;
+	-fx-background-color: #e4fffd;
+    -fx-border-radius: 5;
+    -fx-padding: 3 6 6 6;
+    -fx-effect: dropshadow( three-pass-box , #e4fffd , 5, 0.0 , 0 , 1 );
+}
+
+.card-label-basic {
+	-fx-font: 20px "Nyala";
+	-fx-font-size: 20.0;
+}

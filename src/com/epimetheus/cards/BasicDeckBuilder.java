@@ -18,9 +18,10 @@ public class BasicDeckBuilder implements DeckBuilder {
 		
 		while (true){
 			try {
-				BasicEvent event = new BasicEvent(deck);
+				String tempId = rb.getString(eventTag + i + ".id");
 				String tempName = rb.getString(eventTag + i + ".name");
 				String tempText=rb.getString(eventTag + i + ".text");
+				BasicEvent event = new BasicEvent(tempId, deck);
 				int j = 1;
 				while (true){
 					try {
@@ -34,8 +35,7 @@ public class BasicDeckBuilder implements DeckBuilder {
 				}
 				event.setName(tempName);
 				event.setText(tempText);
-				deck.addEvent(event);
-				System.out.println(event + " in list of size " + deck.events.size());
+				deck.addEvent(tempId,event);
 				i++;
 			} catch (MissingResourceException e) {
 				break;

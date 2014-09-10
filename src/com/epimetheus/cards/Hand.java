@@ -157,8 +157,6 @@ public class Hand extends Pane {
 	private void highlight(Card c){
 		if (promoted==c){
 			promoted = null;
-			c.toFront();
-			cards.remove(c);
 			deck.resolve(c);
 			arrange();
 		}

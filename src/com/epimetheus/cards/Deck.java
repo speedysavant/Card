@@ -1,8 +1,8 @@
 package com.epimetheus.cards;
 
+import java.util.HashMap;
+
 import javafx.animation.FadeTransition;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 
@@ -12,9 +12,9 @@ import javafx.util.Duration;
  *
  */
 public class Deck extends Pane {
-	protected ObservableList<GameEvent> events =
-			FXCollections.observableArrayList();
-	int current = 0;
+	protected HashMap<String, GameEvent> events =
+			new HashMap<>();
+	String current = "";
 	protected Tabletop myTable;
 	
 	public Deck(){
@@ -25,13 +25,17 @@ public class Deck extends Pane {
 		this.myTable = table;
 	}
 	
-	public void addEvent(GameEvent e){
-		events.add(e);
-		System.out.println("Event added at " + (events.size()-1));
+	public void addEvent(String name, GameEvent e){
+		events.put(name, e);
+		if (current.compareTo("")==0) current = name;
 	}
 	
 	public GameEvent getEvent(){
 		return events.get(current);
+	}
+	
+	public GameEvent getEvent(String key){
+		return events.get(key);
 	}
 	
 	// resolve the result of a selected card. called after the user selects a card.
@@ -63,10 +67,24 @@ public class Deck extends Pane {
 			ft.setCycleCount(1);
 			ft.setAutoReverse(false);
 			ft.play();
-			current = Integer.valueOf((String)c.getResolution());
-			myTable.setEvent(events.get(current));
+			
+			// resolve the deck
+			// current = (String)c.getResolution();
+			// myTable.setEvent(events.get(current));
+			ResolutionManager.resolve(c.getResolution(), myTable);
+			
+			// move the card back to the proper configuration
+			c.setOpacity(1.0);
+			c.setScaleX(1.0);
+			c.setScaleY(1.0);
 		} catch (NullPointerException e){
 			throw new RuntimeException("Unable to load Event " + c.getResolution());
 		}
+	}
+	protected void setCurrent(String current){
+		this.current = current;
+	}
+	protected String getCurrent(){
+		return current;
 	}
 }
