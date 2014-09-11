@@ -36,6 +36,7 @@ public class ResolutionManager {
 											break;
 											
 		case "ConsoleTestResolution"	:	System.out.println((String)r.resolve());
+											
 											break;
 											
 		default							: 	System.err.println("No resolution script for " + r);
