@@ -1,14 +1,11 @@
 package com.epimetheus.cards.test;
 
-import java.io.IOException;
-import java.io.PrintStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import com.epimetheus.cards.*;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -19,11 +16,16 @@ public class CNT_Main implements ControlledScreen {
 	@FXML protected AnchorPane left;
 	@FXML protected AnchorPane world;
 	@FXML protected ImageView brassbutton;
-	@FXML protected TextArea messageArea;
 	protected Image image;
 	protected ImageView imv;
 	
+	protected TokenManager tm;
+	
 	public CNT_Main(){
+		tm = TokenManager.getManager();
+		World world = new World();
+		world.setName("Heofon");
+		tm.store("World", world);
 	}
 	
 	@Override
@@ -47,9 +49,6 @@ public class CNT_Main implements ControlledScreen {
 		
 	}
 	
-	public void addMessage(String message){
-		messageArea.appendText(message + "\n");
-	}
 	private void addCards(){
 		Deck deck = new BasicDeckBuilder().getDeck();
 		Tabletop table = new Tabletop(deck);
