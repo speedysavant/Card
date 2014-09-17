@@ -38,3 +38,17 @@
 	-fx-font: 20px "Nyala";
 	-fx-font-size: 20.0;
 }
+
+#menu-title {
+	-fx-font: 90px "Nyala";
+	-fx-fill: white;
+	-fx-stroke: black;
+	-fx-stroke-width: 1;
+}
+
+#menu-choice-label {
+	-fx-font: 50px "Nyala";
+	-fx-fill: white;
+	-fx-stroke: black;
+	-fx-stroke-width: 1;
+}

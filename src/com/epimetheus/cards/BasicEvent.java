@@ -20,6 +20,7 @@ public class BasicEvent implements GameEvent {
 	protected Pane pane;
 	
 	public BasicEvent(String id, Deck deck){
+		
 		this.deck=deck;
 		this.id=id;
 		hand = new Hand(deck);

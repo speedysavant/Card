@@ -2,11 +2,13 @@ package com.epimetheus.cards;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.scene.CacheHint;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
 
 public class Tabletop extends AnchorPane {
+	
 	protected GameEvent currentEvent;
 	protected Hand hand;
 	protected Card<String> selected;
@@ -18,6 +20,8 @@ public class Tabletop extends AnchorPane {
 	
 	public Tabletop(Deck deck){
 		super();
+		this.setCache(true);
+		this.setCacheHint(CacheHint.SPEED);
 		this.deck=deck;
 		deck.setTable(this);
 		setEvent(deck.getEvent());

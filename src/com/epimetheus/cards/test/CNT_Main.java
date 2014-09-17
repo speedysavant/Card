@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 import com.epimetheus.cards.*;
 
 import javafx.fxml.FXML;
+import javafx.scene.CacheHint;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -19,9 +20,11 @@ public class CNT_Main implements ControlledScreen {
 	protected Image image;
 	protected ImageView imv;
 	
+	protected ScreensController controller;
 	protected TokenManager tm;
 	
 	public CNT_Main(){
+		super();
 		tm = TokenManager.getManager();
 		World world = new World();
 		world.setName("Heofon");
@@ -32,6 +35,8 @@ public class CNT_Main implements ControlledScreen {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		image = new Image("resources/fjord.jpg");
 		imv = new ImageView(image);
+		imv.setCache(true);
+		imv.setCacheHint(CacheHint.SPEED);
 		imv.setFitHeight(1000);
 		imv.setFitWidth(1600);
 		world.getChildren().add(imv);
@@ -42,7 +47,7 @@ public class CNT_Main implements ControlledScreen {
 
 	@Override
 	public void setScreenParent(ScreensController screenPage) {
-		
+		this.controller=screenPage;
 	}
 
 	public void buildLeft(){
@@ -50,6 +55,8 @@ public class CNT_Main implements ControlledScreen {
 	}
 	
 	private void addCards(){
+		// Here's where my problem is - this is too slow, and is blocking.
+		// Move this off of the UI thread! At least move to a loading screen!
 		Deck deck = new BasicDeckBuilder().getDeck();
 		Tabletop table = new Tabletop(deck);
 		cardtable.getChildren().addAll(table);

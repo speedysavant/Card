@@ -11,6 +11,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.CacheHint;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.layout.AnchorPane;
@@ -26,6 +27,9 @@ public class ScreensController extends StackPane {
 	private HashMap<String, ControlledScreen> controllers = new HashMap<>();
 	
 	public ScreensController(Stage stage){
+		super();
+		this.setCache(true);
+		this.setCacheHint(CacheHint.SPEED);
 		this.stage=stage;
 	}
 	

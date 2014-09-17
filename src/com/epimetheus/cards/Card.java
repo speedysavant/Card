@@ -5,6 +5,7 @@ import javafx.animation.ParallelTransition;
 import javafx.animation.ScaleTransition;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
+import javafx.scene.CacheHint;
 import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
@@ -32,6 +33,8 @@ public class Card<T> extends AnchorPane {
 	
 	public Card(String name){
 		super();
+		this.setCache(true);
+		this.setCacheHint(CacheHint.SPEED);
 		setName(name);
 		this.getStyleClass().add("card-basic");
 		this.setMaxHeight(defaultheight);

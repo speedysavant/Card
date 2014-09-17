@@ -10,6 +10,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.geometry.Point2D;
+import javafx.scene.CacheHint;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
@@ -26,6 +27,8 @@ public class Hand extends Pane {
 	
 	public Hand(Deck deck){
 		super();
+		this.setCache(true);
+		this.setCacheHint(CacheHint.SPEED);
 		this.deck = deck;
 		cards = FXCollections.observableArrayList();
 		promote = getPromotionPoint();

@@ -3,6 +3,7 @@ package com.epimetheus.cards;
 import java.util.HashMap;
 
 import javafx.animation.FadeTransition;
+import javafx.scene.CacheHint;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 
@@ -19,6 +20,8 @@ public class Deck extends Pane {
 	
 	public Deck(){
 		super();
+		this.setCache(true);
+		this.setCacheHint(CacheHint.SPEED);
 	}
 	
 	public void setTable(Tabletop table){
