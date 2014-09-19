@@ -23,19 +23,20 @@ public class GraphMap extends HashMap<String, Pane> {
 		value.setId(key);
 		if (value instanceof GamePane){
 			((GamePane) value).setTheatre(theatre);
+			((GamePane) value).refresh();
 		}
 		return pane;
 	}
 	
 	public void enstage(Group root, String name){
 		
-		// Swap the graphs on the stage
+		// Swap the graphs on the stage //
 		destage(root);
 		try {
 			Pane newPane = get(name);
 			root.getChildren().add(newPane);
 			
-			// now bind it to the stage
+			// now bind it to the stage and size it properly //
 			Scene scene = root.getScene();
 			scene.widthProperty().addListener(listener->{
 				newPane.setPrefWidth(scene.widthProperty().get());
@@ -43,6 +44,8 @@ public class GraphMap extends HashMap<String, Pane> {
 			scene.heightProperty().addListener(listener->{
 				newPane.setPrefHeight(scene.heightProperty().get());
 			});
+			newPane.setPrefHeight(scene.heightProperty().get());
+			newPane.setPrefWidth(scene.widthProperty().get());
 			
 		} catch (NullPointerException e){
 			e.printStackTrace();

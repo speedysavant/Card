@@ -2,7 +2,7 @@ package com.epimetheus.cards.test;
 
 import java.util.HashMap;
 
-public class TokenManager {
+public class TokenManager implements Saveable{
 	protected HashMap<String, GameToken> tokens = new HashMap<>();
 	protected static TokenManager manager=null;
 	
@@ -23,5 +23,16 @@ public class TokenManager {
 	
 	public GameToken get(String key){
 		return tokens.get(key);
+	}
+
+	@Override
+	public String save() {
+		return "TokenManager";
+	}
+
+	@Override
+	public boolean load() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

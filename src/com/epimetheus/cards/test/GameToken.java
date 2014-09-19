@@ -2,7 +2,7 @@ package com.epimetheus.cards.test;
 
 import java.util.HashMap;
 
-public abstract class GameToken {
+public abstract class GameToken implements Saveable {
 	protected String name = "UNDEFINED GAME TOKEN";
 	protected HashMap<String, String> atts = new HashMap<>();
 	public String getName(){
