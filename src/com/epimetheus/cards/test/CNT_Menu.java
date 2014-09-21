@@ -54,9 +54,16 @@ public class CNT_Menu implements ControlledScreen {
 		vBox.setCache(true);
 		vBox.setCacheHint(CacheHint.SPEED);
 		vBox.setSpacing(20);
-		vBox.getChildren().add(buildMenuButton("New Game", Screens.MAIN));
-		vBox.getChildren().add(buildMenuButton("Save Game", Screens.MENU));
-		vBox.getChildren().add(buildMenuButton("Load Game", Screens.MENU));
+		MenuChoiceText newGame = new MenuChoiceText("New Game");
+		newGame.setOnMouseClicked(event->{controller.setScreen(Screens.MAIN);});
+		
+		MenuChoiceText loadGame = new MenuChoiceText("Save Game");
+		loadGame.setOnMouseClicked(event->{controller.setScreen(Screens.MENU);});
+		
+		MenuChoiceText options = new MenuChoiceText("Options");
+		options.setOnMouseClicked(event->{controller.setScreen(Screens.OPTIONS);});
+		
+		vBox.getChildren().addAll(newGame, loadGame, options);
 		AnchorPane.setTopAnchor(vBox, 300d);
 		AnchorPane.setRightAnchor(vBox, 500d);
 		
@@ -80,60 +87,5 @@ public class CNT_Menu implements ControlledScreen {
 	
 	public void refresh(){
 		
-	}
-	
-	private Text buildMenuButton(String text, Screens target){
-		
-		// Design the Label //
-		Text menuchoice = new Text(text);
-		menuchoice.setCache(true);
-		menuchoice.setCacheHint(CacheHint.SPEED);
-		DropShadow ds = new DropShadow();
-		ds.setRadius(10.0);
-		ds.setColor(Color.WHITE);
-		InnerShadow is = new InnerShadow();
-		is.setColor(Color.BLACK);
-		is.setRadius(5.0);
-		ds.setInput(is);
-		menuchoice.setEffect(ds);
-		menuchoice.setPickOnBounds(true);
-		menuchoice.setId("menu-choice-label");
-		
-		// Add the Mouse Action Properties //
-		menuchoice.setOnMouseEntered(event->startHover(menuchoice));
-		menuchoice.setOnMouseExited(event->stopHover(menuchoice));
-		menuchoice.setOnMouseClicked(event->launchTarget(menuchoice, target));
-		
-		return menuchoice;
-	}
-	
-	private void startHover(Text text){
-		try {
-			DropShadow ds = (DropShadow) text.getEffect();
-			ds.setRadius(20.0);
-		} catch (NullPointerException e) {
-			
-		}
-		
-	}
-	
-	private void stopHover(Text text){
-		try {
-			DropShadow ds = (DropShadow) text.getEffect();
-			ds.setRadius(10.0);
-		} catch (NullPointerException e) {
-			
-		}
-	}
-	
-	private void launchTarget(Text text, Screens target){
-		try {
-			DropShadow ds = (DropShadow) text.getEffect();
-			ds.setRadius(30.0);
-		} catch (NullPointerException e) {
-			
-		}
-
-		controller.setScreen(target);
 	}
 }

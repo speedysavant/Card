@@ -6,7 +6,6 @@ public class GameManager {
 	
 	public GameManager(){
 		tm = TokenManager.getManager();
-		theatre = Theatre.getTheatre();
 	}
 	
 	protected boolean newGame(){

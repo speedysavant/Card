@@ -7,13 +7,13 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 
-public class GraphMap extends HashMap<String, Pane> {
+public class ZDEPR_GraphMap extends HashMap<String, Pane> {
 	private static final long serialVersionUID = 6556717795537146887L;
 	private Theatre theatre;
 	
-	public GraphMap(){
+	public ZDEPR_GraphMap(){
 		super();
-		theatre = Theatre.getTheatre();
+//		theatre = Theatre.getTheatre();
 	}
 	
 	@Override public Pane put(String key, Pane value){

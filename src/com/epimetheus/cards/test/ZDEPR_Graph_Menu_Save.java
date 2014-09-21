@@ -1,13 +1,16 @@
 package com.epimetheus.cards.test;
 
 import java.io.File;
+import java.io.IOException;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.CacheHint;
+import javafx.scene.Parent;
 import javafx.scene.control.ListView;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.InnerShadow;
@@ -20,11 +23,11 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
-public class Graph_Menu_Save extends Graph_Abstract {
+public class ZDEPR_Graph_Menu_Save extends ZDEPR_Graph_Abstract {
 
 	protected Text title;
 	
-	public Graph_Menu_Save(){
+	public ZDEPR_Graph_Menu_Save(){
 		super();
 		
 		// Build Main Container //
@@ -79,14 +82,22 @@ public class Graph_Menu_Save extends Graph_Abstract {
 		load.setOnMouseClicked(new EventHandler<MouseEvent>(){
 			@Override
 			public void handle(MouseEvent event) {
-				theatre.enstage("menu");
+				FXMLLoader myLoader = new
+						FXMLLoader(getClass().getResource("FX_Main.fxml"));
+				try {
+					Parent loadScreen = (Parent) myLoader.load();
+					
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				
 			}
 		});
 		MenuChoiceText cancel = new MenuChoiceText("Cancel");
 		cancel.setOnMouseClicked(new EventHandler<MouseEvent>(){
 			@Override
 			public void handle(MouseEvent event) {
-				theatre.enstage("menu");
+// 				theatre.enstage("menu");
 			}
 		});
 		hbox.getChildren().addAll(load, cancel);

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane fx:id="root" cache="true" cacheHint="SPEED" prefHeight="900.0" prefWidth="1600.0" style="-fx-background-color: radial-gradient(center 50% 65% , radius 800px, reflect, black, grey);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.epimetheus.cards.test.CNT_Options">
+   <children>
+      <MenuBar style="-fx-background-color: black;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="Menu">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+        </menus>
+         <effect>
+            <DropShadow color="#000000de" height="30.0" radius="14.5" spread="0.23" width="30.0" />
+         </effect>
+      </MenuBar>
+   </children>
+</AnchorPane>

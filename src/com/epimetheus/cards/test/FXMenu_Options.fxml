@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.BorderPane?>
+
+<AnchorPane fx:id="root" cache="true" cacheHint="SPEED" prefHeight="600.0" prefWidth="450.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.epimetheus.cards.test.CNTMenu_Options">
+   <children>
+<BorderPane prefHeight="600.0" prefWidth="450.0">
+   <top>
+      <VBox alignment="TOP_CENTER" cache="true" cacheHint="SPEED" prefHeight="550.0" prefWidth="450.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
+         <effect>
+            <DropShadow color="#000000cc" />
+         </effect>
+         <children>
+                  <Text fill="WHITE" strokeWidth="2.0" text="Options">
+                     <font>
+                        <Font name="Nyala" size="50.0" />
+                     </font>
+                     <effect>
+                        <InnerShadow>
+                           <input>
+                              <DropShadow color="WHITE" />
+                           </input>
+                        </InnerShadow>
+                     </effect>
+                  </Text>
+            <Separator cache="true" cacheHint="SPEED" style="-fx-background-color: black;">
+               <padding>
+                  <Insets bottom="5.0" left="50.0" right="50.0" top="5.0" />
+               </padding>
+            </Separator>
+         </children>
+      </VBox>
+   </top>
+         <bottom>
+            <HBox fx:id="linkbox" alignment="CENTER" prefHeight="50.0" prefWidth="450.0" spacing="25.0" BorderPane.alignment="CENTER" />
+         </bottom>
+</BorderPane>
+   </children>
+</AnchorPane>

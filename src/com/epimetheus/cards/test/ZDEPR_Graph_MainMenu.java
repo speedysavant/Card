@@ -15,13 +15,13 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 
-class Graph_MainMenu extends Graph_Abstract {
+class ZDEPR_Graph_MainMenu extends ZDEPR_Graph_Abstract {
 
 	protected VBox vBox;
 	protected Text title;
 	protected DropShadow titleglow;
 	
-	public Graph_MainMenu(){
+	public ZDEPR_Graph_MainMenu(){
 		super();
 		
 		// Build Background //
@@ -64,7 +64,7 @@ class Graph_MainMenu extends Graph_Abstract {
 		saveGame.setOnMouseClicked(new EventHandler<MouseEvent>(){
 			@Override
 			public void handle(MouseEvent event) {
-				theatre.enstage("menu-save");
+//				theatre.enstage("menu-save");
 			}
 		});
 		MenuChoiceText loadGame = new MenuChoiceText("Load Game");
@@ -72,8 +72,8 @@ class Graph_MainMenu extends Graph_Abstract {
 			@Override
 			public void handle(MouseEvent event) {
 				final FileChooser fc = new FileChooser();
-				File file = fc.showOpenDialog(theatre.getStage());
-				System.out.println(file);	
+//				File file = fc.showOpenDialog(theatre.getStage());
+//				System.out.println(file);	
 			}
 		});
 		vBox.getChildren().addAll(newGame, saveGame, loadGame);
@@ -87,32 +87,5 @@ class Graph_MainMenu extends Graph_Abstract {
 	}
 
 	public void refresh(){
-	}
-}
-
-class MenuChoiceText extends Text {
-	protected DropShadow ds;
-	
-	public MenuChoiceText(String text){
-		super(text);
-		
-		// Custom Config //
-		setCache(true);
-		setCacheHint(CacheHint.SPEED);
-		ds = new DropShadow();
-		ds.setRadius(10.0);
-		ds.setColor(Color.WHITE);
-		InnerShadow is = new InnerShadow();
-		is.setColor(Color.BLACK);
-		is.setRadius(5.0);
-		ds.setInput(is);
-		setEffect(ds);
-		setPickOnBounds(true);
-		setId("menu-choice-label");
-	
-		// Add the Mouse Action Properties //
-		this.setOnMouseEntered(event->ds.setRadius(20.0));
-		this.setOnMouseExited(event->ds.setRadius(5.0));
-		this.setOnMouseClicked(event->ds.setRadius(30.0));
 	}
 }

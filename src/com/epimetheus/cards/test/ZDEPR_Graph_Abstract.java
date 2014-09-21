@@ -5,13 +5,13 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
-abstract class Graph_Abstract extends AnchorPane implements GamePane {
+abstract class ZDEPR_Graph_Abstract extends AnchorPane implements GamePane {
 	
 	protected Theatre theatre;
 	protected Image backimage;
 	protected ImageView imv;
 	
-	public Graph_Abstract(){
+	public ZDEPR_Graph_Abstract(){
 		super();
 		// Set Properties //
 		setCache(true);
