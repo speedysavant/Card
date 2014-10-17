@@ -15,6 +15,7 @@ import javafx.scene.CacheHint;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -117,26 +118,12 @@ public class ScreensController extends StackPane {
 						new KeyFrame(new Duration(500), new KeyValue(opacity, 1.0)));
 				fadeIn.play();
 			}
-			
-			stage.widthProperty().addListener(new ChangeListener<Object>(){
-				@Override
-				public void changed(ObservableValue<?> observable,
-						Object oldValue, Object newValue) {
-					AnchorPane ap = (AnchorPane) screens.get(name.toString());
-					ap.setPrefWidth((double)newValue);
-					ap.autosize();
-				}
-			});
-			stage.heightProperty().addListener(new ChangeListener<Object>(){
-				@Override
-				public void changed(ObservableValue<?> observable,
-						Object oldValue, Object newValue) {
-					AnchorPane ap = (AnchorPane) screens.get(name.toString());
-					ap.setPrefHeight((double)newValue);
-					ap.autosize();
-				}
-			});
 			controllers.get(name.getFxml()).refresh();
+			
+			Pane pane = (Pane)screens.get(name.toString());
+			pane.prefWidthProperty().bind(stage.widthProperty());
+			pane.prefHeightProperty().bind(stage.heightProperty());
+			
 			return true;
 			
 		} else {

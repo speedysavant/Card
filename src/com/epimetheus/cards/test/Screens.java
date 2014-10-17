@@ -4,6 +4,7 @@ enum Screens {
 	MAIN("FX_Main.fxml"),
 	MENU("FX_Menu.fxml"),
 	OPTIONS("FX_Options.fxml"),
+	GAME_MAIN("FX_GameMain.fxml"),
 	MENU_OPTIONS("FXMenu_Options.fxml")
 	;
 	String filename;

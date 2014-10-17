@@ -1,13 +1,16 @@
 package com.epimetheus.cards.test;
 
+import java.io.File;
+
 import javafx.application.Application;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.stage.Stage;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 
 public class Theatre extends Application {
+	
+	protected static TokenManager tm;
+	protected static World world;
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -15,9 +18,10 @@ public class Theatre extends Application {
 			// The ScreensController pre-loads all Screens that we will find
 			// in the app. This code will be migrated into the Screens enum
 			ScreensController mainContainer = new ScreensController(primaryStage);
-			mainContainer.loadScreen(Screens.MAIN);
+			// mainContainer.loadScreen(Screens.MAIN);
 			mainContainer.loadScreen(Screens.MENU);
 			mainContainer.loadScreen(Screens.OPTIONS);
+			mainContainer.loadScreen(Screens.GAME_MAIN);
 			mainContainer.loadScreen(Screens.MENU_OPTIONS);
 			
 			
@@ -36,6 +40,33 @@ public class Theatre extends Application {
 			e.printStackTrace();
 		}
 	}
+	
+	public static void setupWorld(){
+		setupWorld(null);
+	}
+	
+	public static void setupWorld(File saveFile){
+		// If the file is Null, set up a fresh game //
+		if (saveFile==null){
+			tm = TokenManager.getManager();
+			world = new World();
+			tm.store("world",world);
+		}
+		
+		// Else, set up a game based on the save //
+		else {
+			
+		}
+	}
+	
+	public static TokenManager getTokenManager(){
+		return tm;
+	}
+	
+	public static World getWorld(){
+		return world;
+	}
+	
 	public static void main(String[] args) {
 		launch(args);
 	}

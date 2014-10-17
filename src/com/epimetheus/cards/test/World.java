@@ -8,6 +8,16 @@ public class World extends GameToken {
 		System.out.println(atts.values() + "\n\n");
 	}
 
+	protected void setup(){
+		this.setName("Heofon");
+		
+		// Build Locations //
+		
+		// Build Cities //
+		
+		
+	}
+	
 	@Override
 	public String save() {
 		return "World";

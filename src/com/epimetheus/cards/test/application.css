@@ -7,22 +7,64 @@
     -fx-effect: dropshadow( three-pass-box , #e4fffd , 5, 0.0 , 0 , 1 );
 }
 
+.list-view {
+	-fx-background-color: transparent;
+}
+.list-view > .viewport {
+	-fx-background-color: transparent;
+}
+.list-cell {
+	-fx-background-color: transparent;
+	-fx-text-fill: white;
+	-fx-alignment: center;
+	-fx-font: 24px "Nyala";
+	-fx-padding: 6;
+}
+.list-cell:filled:hover {
+	-fx-background-color: linear-gradient(to right, black, transparent);
+	-fx-effect: dropshadow( three-pass-box , white , 5 , 0.0 , 0 , 0 );
+}
+.list-cell:filled:hover:pressed {
+	-fx-effect: dropshadow( three-pass-box , #e4fffd , 8 , 0.0 , 0 , 0 );
+}
+
+.scroll-pane {
+	-fx-background-color: transparent;
+}
+.scroll-pane > .viewport {
+   -fx-background-color: transparent;
+}
+
+.separator {
+	-fx-background-color: #e4fffd;
+	-fx-effect: dropshadow( three-pass-box , #e4fffd , 3 , 0.0 , 0 , 0 );
+}
+
 #event-pane {
-	
+	-fx-background-color: transparent;
+	-fx-text-fill: white;
+	-fx-font: 24px "Nyala";
+}
+
+#event-pane-title {
+	-fx-font: 16px "Nyala";
+	-fx-text-fill: black;
+	-fx-font-size: 52.0;
+	-fx-effect: dropshadow( three-pass-box , white , 10 , 0.0 , 0 , 1 );
 }
 
 #event-display-title {
 	-fx-font: 16px "Nyala";
 	-fx-text-fill: #e4fffd;
 	-fx-font-size: 52.0;
-	-fx-effect: dropshadow( three-pass-box , #e4fffd , 5, 0.0 , 0 , 1 );
+	-fx-effect: dropshadow( three-pass-box , #e4fffd , 10 , 0.0 , 0 , 1 );
 }
 
 #event-display-body {
 	-fx-font: 16px "Nyala";
 	-fx-text-fill: #e4fffd;
 	-fx-font-size: 28.0;
-	-fx-effect: dropshadow( three-pass-box , #e4fffd , 5, 0.0 , 0 , 1 );
+	-fx-effect: dropshadow( three-pass-box , #e4fffd , 5 , 0.0 , 0 , 1 );
 }
 
 .card-basic {

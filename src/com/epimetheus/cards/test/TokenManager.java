@@ -18,11 +18,12 @@ public class TokenManager implements Saveable{
 	}
 	
 	public void store(String key, GameToken token){
-		tokens.put(key, token);
+		tokens.put(key.toLowerCase(), token);
 	}
 	
 	public GameToken get(String key){
-		return tokens.get(key);
+		
+		return tokens.get(key.toLowerCase());
 	}
 
 	@Override

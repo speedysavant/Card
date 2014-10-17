@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="root" cache="true" cacheHint="SPEED" prefHeight="900.0" prefWidth="1600.0" style="-fx-background-color: radial-gradient(center 50% 65% , radius 800px, reflect, black, grey);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.epimetheus.cards.test.CNT_GameMain">
+   <children>
+      <ImageView fitHeight="872.0" fitWidth="1447.0" layoutX="14.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="204.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+         <image>
+            <Image url="@../../../../resources/fjord.jpg" />
+         </image>
+         <effect>
+            <ColorAdjust brightness="-0.4" />
+         </effect>
+      </ImageView>
+      <MenuBar fx:id="menubar" prefWidth="1600.0" style="-fx-background-color: black;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+          <Menu fx:id="menu" mnemonicParsing="false" text="Menu">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../resources/icon-menu.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+           </Menu>
+           <Menu mnemonicParsing="false" text="Citizens">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../resources/icon-menu.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+           </Menu>
+           <Menu mnemonicParsing="false" text="Autos">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../resources/icon-menu.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+           </Menu>
+           <Menu mnemonicParsing="false" text="Resources">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../resources/icon-menu.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+           </Menu>
+        </menus>
+         <effect>
+            <DropShadow color="#000000de" height="30.0" radius="14.5" spread="0.23" width="30.0" />
+         </effect>
+      </MenuBar>
+   </children>
+</AnchorPane>

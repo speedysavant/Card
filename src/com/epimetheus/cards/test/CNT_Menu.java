@@ -54,10 +54,12 @@ public class CNT_Menu implements ControlledScreen {
 		vBox.setCache(true);
 		vBox.setCacheHint(CacheHint.SPEED);
 		vBox.setSpacing(20);
-		MenuChoiceText newGame = new MenuChoiceText("New Game");
-		newGame.setOnMouseClicked(event->{controller.setScreen(Screens.MAIN);});
-		
-		MenuChoiceText loadGame = new MenuChoiceText("Save Game");
+		MenuChoiceText newGame = new MenuChoiceText("Start");
+		newGame.setOnMouseClicked(event->{
+			Theatre.setupWorld(null);
+			controller.setScreen(Screens.GAME_MAIN);
+		});
+		MenuChoiceText loadGame = new MenuChoiceText("Load");
 		loadGame.setOnMouseClicked(event->{controller.setScreen(Screens.MENU);});
 		
 		MenuChoiceText options = new MenuChoiceText("Options");
